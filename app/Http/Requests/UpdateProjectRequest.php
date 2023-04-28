@@ -33,7 +33,8 @@ class UpdateProjectRequest extends FormRequest
             ],
             'description' => 'required|min:10|string',
             'url' => 'nullable|url',
-            'type_id' => 'nullable|exists:projects,type_id'
+            'type_id' => 'nullable|exists:projects,type_id',
+            'technologies' => 'exists:technologies,id'
         ];
     }
 }
