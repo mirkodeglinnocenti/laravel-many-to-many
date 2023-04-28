@@ -31,7 +31,7 @@
                     </td>
                     <td>
                         @forelse ($project->technologies as $tech)
-                            <span>{{ $tech->name }}</span>
+                            <span class="badge rounded-pill text-bg-warning">{{ $tech->name }}</span>
                         @empty
                             <span>-</span>
                         @endforelse
