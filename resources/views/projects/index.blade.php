@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>Titolo</th>
-                <th>Slug</th>
+                <th>Tecnologie</th>
                 <th>Descrizione</th>
                 <th>Url</th>
                 <th>Azioni</th>
@@ -29,7 +29,13 @@
                             {{ $project->title }}
                         </a>
                     </td>
-                    <td>{{ $project->slug }}</td>
+                    <td>
+                        @forelse ($project->technologies as $tech)
+                            <span>{{ $tech->name }}</span>
+                        @empty
+                            <span>-</span>
+                        @endforelse
+                    </td>
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->url }}</td>
                     <td>
