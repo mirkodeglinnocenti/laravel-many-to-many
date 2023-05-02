@@ -47,15 +47,15 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
-        // $new_project = new Project();
+        $new_project = new Project();
 
-        // $new_project->fill($data);
+        $new_project->fill($data);
 
-        // $new_project->slug = Str::of($data['title'])->slug();
+        $new_project->slug = Str::of($data['title'])->slug();
 
-        // $new_project->save();
+        $new_project->save();
 
-        $new_project = Project::create($data);
+        // $new_project = Project::create($data);
 
         if (isset($data['technologies'])) {
             $new_project->technologies()->attach($data['technologies']);
@@ -101,6 +101,13 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         $project->update($data);
+
+        if (isset($data['technologies'])) 
+        {
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->sync([]);
+        }
 
         return to_route('projects.show', $project->slug);
     }
