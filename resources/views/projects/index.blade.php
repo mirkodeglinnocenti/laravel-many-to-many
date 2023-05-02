@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th>Titolo</th>
+                <th>Tipologia</th>
                 <th>Tecnologie</th>
                 <th>Descrizione</th>
                 <th>Url</th>
@@ -28,6 +29,13 @@
                         <a href="{{ route('projects.show', $project)}}">
                             {{ $project->title }}
                         </a>
+                    </td>
+                    <td>
+                        @if($project->type)
+                            <span class="d-inline-block mb-3">{{ $project->type->type }}</span>
+                        @else
+                            <span class="d-inline-block mb-3">-</span>
+                        @endif
                     </td>
                     <td>
                         @forelse ($project->technologies as $tech)
